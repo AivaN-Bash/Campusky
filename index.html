@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>StreamPro - Premium Streaming</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #007AFF;
+            --secondary: #0A84FF;
+            --background: #F5F5F7;
+            --card-bg: rgba(255, 255, 255, 0.8);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        body {
+            background: var(--background);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Advanced Header Animation */
+        header {
+            background: linear-gradient(160deg, var(--primary), var(--secondary));
+            padding: 8rem 0 4rem;
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+            overflow: hidden;
+            animation: gradientShift 10s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .profile-gif {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1.5rem;
+            animation: pulse 2.5s ease-in-out infinite, float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Snowfall Effect */
+        .snow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .snowflake {
+            position: absolute;
+            top: -10%;
+            width: 10px;
+            height: 10px;
+            background: white;
+            border-radius: 50%;
+            filter: blur(1px);
+            animation: snowfall linear infinite;
+        }
+
+        @keyframes snowfall {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(100vh); }
+        }
+
+        /* Grid Layout */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+
+        /* Glassmorphism Card with Hover Animation */
+        .card {
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Modern Buttons with Hover Effects */
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem 2rem;
+            margin: 0.5rem;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .button-solid {
+            background: var(--primary);
+            color: white;
+        }
+
+        .button-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .button:active {
+            transform: scale(0.95);
+        }
+
+        /* Social Links with Bounce Animation */
+        .social-grid {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .social-icon {
+            width: 44px;
+            height: 44px;
+            background: var(--card-bg);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .social-icon:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-5px) scale(1.1);
+            animation: bounce 0.5s ease;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(-5px) scale(1.1); }
+            50% { transform: translateY(0) scale(1); }
+        }
+
+        /* Scroll Progress Indicator */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: var(--primary);
+            width: 0%;
+            z-index: 1000;
+            transition: width 0.3s ease;
+        }
+
+        /* Mobile Optimization */
+        @media (max-width: 768px) {
+            header {
+                padding: 6rem 0 3rem;
+            }
+
+            .container {
+                padding: 1.5rem;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .profile-gif {
+                width: 120px;
+                height: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress"></div>
+
+    <header>
+        <!-- Snowfall Effect -->
+        <div class="snow">
+            <!-- Snowflakes will be dynamically generated here -->
+        </div>
+
+        <div class="header-content container">
+            <img src="images/pro.gif" alt="Pro Streamer" class="profile-gif">
+            <h1 style="color: white; font-size: 2.5rem; margin-bottom: 0.5rem;">Campusky</h1>
+            <p style="color: rgba(255, 255, 255, 0.9);">สตรีมช่วง 22:00 หรืออาจช้ากว่านั้น</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="grid">
+            <div class="card" style="animation-delay: 0.2s">
+                <h2 style="margin-bottom: 1rem;">🤝 ติดต่องาน</h2>
+                <p style="color: #666; margin-bottom: 1.5rem;">For work : DM TIKTOK or thecampusky@gmail.com</p>
+                <a href="contract.html" class="button button-solid">ติดต่องาน</a>
+            </div>
+
+            <div class="card" style="animation-delay: 0.4s">
+                <h2 style="margin-bottom: 1rem;">❤️ โดเนทขึ้นจอ</h2>
+                <p style="color: #666; margin-bottom: 1.5rem;">ขอบคุณมากๆนะครับ</p>
+                <a href="https://tipme.in.th/campusky" class="button button-solid">กดตรงนี้เพื่อโดเนท</a>
+            </div>
+
+            <div class="card" style="animation-delay: 0.6s">
+                <h2 style="margin-bottom: 1rem;">🎮 Discord</h2>
+                <p style="color: #666; margin-bottom: 1.5rem;">เข้าดิสมาได้เลนค้าบ</p>
+                <a href="https://discord.com/invite/6ARxnmmp" class="button button-outline">Join Discord</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Snowfall Effect
+        const snowContainer = document.querySelector('.snow');
+
+        function createSnowflake() {
+            const snowflake = document.createElement('div');
+            snowflake.classList.add('snowflake');
+            snowflake.style.left = `${Math.random() * 100}%`;
+            snowflake.style.animationDuration = `${Math.random() * 3 + 2}s`; // Random duration between 2s and 5s
+            snowflake.style.opacity = Math.random();
+            snowflake.style.width = `${Math.random() * 10 + 5}px`; // Random size between 5px and 15px
+            snowflake.style.height = snowflake.style.width;
+            snowContainer.appendChild(snowflake);
+
+            // Remove snowflake after it falls
+            setTimeout(() => {
+                snowflake.remove();
+            }, 5000);
+        }
+
+        // Generate snowflakes every 100ms
+        setInterval(createSnowflake, 100);
+
+        // Scroll Progress Bar
+        const scrollProgress = document.querySelector('.scroll-progress');
+
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            const bodyHeight = document.body.clientHeight - window.innerHeight;
+            const progress = (scrollY / bodyHeight) * 100;
+            scrollProgress.style.width = `${progress}%`;
+        });
+
+        // Fade-in Animation on Load
+        const cards = document.querySelectorAll('.card');
+        cards.forEach((card, index) => {
+            card.style.animationDelay = `${index * 0.2}s`;
+        });
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
