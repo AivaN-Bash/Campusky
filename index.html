@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>StreamPro - Premium Streaming</title>
+    <title>Campusky - สตรีมเมอร์สุดปัง</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
             --primary: #007AFF;
             --secondary: #0A84FF;
             --background: #F5F5F7;
-            --card-bg: rgba(255, 255, 255, 0.8);
+            --card-bg: rgba(255, 255, 255, 0.9);
         }
 
         * {
@@ -32,7 +32,6 @@
             padding: 2rem;
         }
 
-        /* Advanced Header Animation */
         header {
             background: linear-gradient(160deg, var(--primary), var(--secondary));
             padding: 8rem 0 4rem;
@@ -69,7 +68,6 @@
             50% { transform: translateY(-10px); }
         }
 
-        /* Snowfall Effect */
         .snow {
             position: absolute;
             top: 0;
@@ -96,7 +94,6 @@
             100% { transform: translateY(100vh); }
         }
 
-        /* Grid Layout */
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -104,7 +101,6 @@
             margin: 4rem 0;
         }
 
-        /* Glassmorphism Card with Hover Animation */
         .card {
             background: var(--card-bg);
             backdrop-filter: blur(20px);
@@ -116,26 +112,53 @@
             opacity: 0;
             transform: translateY(20px);
             animation: fadeInUp 0.6s ease forwards;
+            display: flex;
+            flex-direction: column;
+            min-height: 320px;
         }
 
-        .card:hover {
-            transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        .card-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .card h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+            color: #1D1D1F;
+            min-height: 3.9rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 0.5rem;
         }
 
-        /* Modern Buttons with Hover Effects */
+        .card p {
+            color: #666;
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            padding: 0 1rem;
+        }
+
+        .button-container {
+            margin-top: auto;
+            text-align: center;
+        }
+
         .button {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 1rem 2rem;
+            padding: 1rem 1.5rem;
             margin: 0.5rem;
             border-radius: 12px;
             text-decoration: none;
@@ -143,6 +166,9 @@
             transition: all 0.3s ease;
             border: none;
             cursor: pointer;
+            width: 100%;
+            max-width: 240px;
+            font-size: 0.95rem;
         }
 
         .button-solid {
@@ -161,44 +187,6 @@
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
         }
 
-        .button:active {
-            transform: scale(0.95);
-        }
-
-        /* Social Links with Bounce Animation */
-        .social-grid {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-top: 3rem;
-        }
-
-        .social-icon {
-            width: 44px;
-            height: 44px;
-            background: var(--card-bg);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .social-icon:hover {
-            background: var(--primary);
-            color: white;
-            transform: translateY(-5px) scale(1.1);
-            animation: bounce 0.5s ease;
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateY(-5px) scale(1.1); }
-            50% { transform: translateY(0) scale(1); }
-        }
-
-        /* Scroll Progress Indicator */
         .scroll-progress {
             position: fixed;
             top: 0;
@@ -210,7 +198,6 @@
             transition: width 0.3s ease;
         }
 
-        /* Mobile Optimization */
         @media (max-width: 768px) {
             header {
                 padding: 6rem 0 3rem;
@@ -228,44 +215,62 @@
                 width: 120px;
                 height: 120px;
             }
+
+            .card {
+                min-height: 280px;
+            }
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Scroll Progress Bar -->
     <div class="scroll-progress"></div>
 
     <header>
-        <!-- Snowfall Effect -->
-        <div class="snow">
-            <!-- Snowflakes will be dynamically generated here -->
-        </div>
-
+        <div class="snow"></div>
         <div class="header-content container">
             <img src="images/pro.gif" alt="Pro Streamer" class="profile-gif">
             <h1 style="color: white; font-size: 2.5rem; margin-bottom: 0.5rem;">Campusky</h1>
-            <p style="color: rgba(255, 255, 255, 0.9);">สตรีมช่วง 22:00 หรืออาจช้ากว่านั้น</p>
+            <p style="color: rgba(255, 255, 255, 0.9);">สตรีมช่วง 22:00 เป็นต้นไป</p>
         </div>
     </header>
 
     <div class="container">
         <div class="grid">
             <div class="card" style="animation-delay: 0.2s">
-                <h2 style="margin-bottom: 1rem;">🤝 ติดต่องาน</h2>
-                <p style="color: #666; margin-bottom: 1.5rem;">For work : DM TIKTOK or thecampusky@gmail.com</p>
-                <a href="contract.html" class="button button-solid">ติดต่องาน</a>
+                <div class="card-content">
+                    <h2>🤝 ติดต่องาน</h2>
+                    <p>สำหรับงานร่วมกัน: DM ผ่าน TIKTOK หรืออีเมล thecampusky@gmail.com</p>
+                    <div class="button-container">
+                        <a href="contract.html" class="button button-solid">เริ่มติดต่อ</a>
+                    </div>
+                </div>
             </div>
 
             <div class="card" style="animation-delay: 0.4s">
-                <h2 style="margin-bottom: 1rem;">❤️ โดเนทขึ้นจอ</h2>
-                <p style="color: #666; margin-bottom: 1.5rem;">ขอบคุณมากๆนะครับ</p>
-                <a href="https://tipme.in.th/campusky" class="button button-solid">กดตรงนี้เพื่อโดเนท</a>
+                <div class="card-content">
+                    <h2>❤️ สนับสนุนสตรีม</h2>
+                    <p>ขอบคุณสำหรับการสนับสนุนทุกครั้งนะครับ!</p>
+                    <div class="button-container">
+                        <a href="https://tipme.in.th/campusky" class="button button-solid">สนับสนุนที่นี่</a>
+                    </div>
+                </div>
             </div>
 
             <div class="card" style="animation-delay: 0.6s">
-                <h2 style="margin-bottom: 1rem;">🎮 Discord</h2>
-                <p style="color: #666; margin-bottom: 1.5rem;">เข้าดิสมาได้เลนค้าบ</p>
-                <a href="https://discord.com/invite/6ARxnmmp" class="button button-outline">Join Discord</a>
+                <div class="card-content">
+                    <h2>🎮 คอมมูนิตี้</h2>
+                    <p>เข้าร่วม Discord ของเราเพื่อพูดคุยและเล่นเกมด้วยกัน!</p>
+                    <div class="button-container">
+                        <a href="https://discord.com/invite/6ARxnmmp" class="button button-outline">เข้าร่วมเลย</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -273,50 +278,29 @@
     <script>
         // Snowfall Effect
         const snowContainer = document.querySelector('.snow');
-
         function createSnowflake() {
             const snowflake = document.createElement('div');
             snowflake.classList.add('snowflake');
             snowflake.style.left = `${Math.random() * 100}%`;
-            snowflake.style.animationDuration = `${Math.random() * 3 + 2}s`; // Random duration between 2s and 5s
+            snowflake.style.animationDuration = `${Math.random() * 3 + 2}s`;
             snowflake.style.opacity = Math.random();
-            snowflake.style.width = `${Math.random() * 10 + 5}px`; // Random size between 5px and 15px
+            snowflake.style.width = `${Math.random() * 10 + 5}px`;
             snowflake.style.height = snowflake.style.width;
             snowContainer.appendChild(snowflake);
-
-            // Remove snowflake after it falls
-            setTimeout(() => {
-                snowflake.remove();
-            }, 5000);
+            setTimeout(() => snowflake.remove(), 5000);
         }
-
-        // Generate snowflakes every 100ms
         setInterval(createSnowflake, 100);
 
-        // Scroll Progress Bar
+        // Scroll Progress
         const scrollProgress = document.querySelector('.scroll-progress');
-
         window.addEventListener('scroll', () => {
-            const scrollY = window.scrollY;
-            const bodyHeight = document.body.clientHeight - window.innerHeight;
-            const progress = (scrollY / bodyHeight) * 100;
+            const progress = (window.scrollY / (document.body.clientHeight - window.innerHeight)) * 100;
             scrollProgress.style.width = `${progress}%`;
         });
 
-        // Fade-in Animation on Load
-        const cards = document.querySelectorAll('.card');
-        cards.forEach((card, index) => {
+        // Card Animations
+        document.querySelectorAll('.card').forEach((card, index) => {
             card.style.animationDelay = `${index * 0.2}s`;
-        });
-
-        // Smooth Scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
         });
     </script>
 </body>
